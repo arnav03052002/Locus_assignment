@@ -1,5 +1,5 @@
 import os
-import fitz  # PyMuPDF
+import fitz  
 import faiss
 import numpy as np
 import json
@@ -46,12 +46,12 @@ def get_embeddings(texts, batch_size=8):
     return all_embeddings
 
 # === Generate embeddings ===
-print("📌 Generating embeddings...")
+print("Generating embeddings...")
 embeddings = get_embeddings(chunks)
 embedding_dim = embeddings[0].shape[0]
 
 # === Create FAISS index ===
-print("📌 Creating FAISS index...")
+print("Creating FAISS index...")
 index = faiss.IndexFlatL2(embedding_dim)
 index.add(np.array(embeddings).astype("float32"))
 
@@ -60,5 +60,5 @@ faiss.write_index(index, "vector.index")
 with open("chunks.json", "w") as f:
     json.dump(chunks, f)
 
-print("✅ Done! Saved vector.index and chunks.json")
+print("Done! Saved vector.index and chunks.json")
 

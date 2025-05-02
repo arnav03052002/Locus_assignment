@@ -96,7 +96,7 @@ if st.sidebar.button("Export Current Session (.txt)"):
     buffer.seek(0)
     st.sidebar.download_button("Download chat", buffer, file_name=filename)
 
-# === ✅ Export full session JSON
+# ===  Export full session JSON
 if st.sidebar.button("Download Full Session JSON"):
     json_str = json.dumps(st.session_state.chat_sessions[st.session_state.active_session], indent=2)
     buffer = io.BytesIO(json_str.encode("utf-8"))
@@ -156,7 +156,7 @@ if query:
 
             context = "\n\n".join(top_chunks)
 
-            # ✅ Friendly, natural assistant prompt
+            #  Friendly, natural assistant prompt
             prompt = f"""You're a helpful assistant answering questions based on the provided document content.
 
 You are a helpful assistant answering questions based on the provided document content.
@@ -196,4 +196,4 @@ Answer:"""
         save_session(st.session_state.active_session, session_chat)
 
     except Exception as e:
-        st.error(f"❌ Error: {e}")
+        st.error(f" Error: {e}")
