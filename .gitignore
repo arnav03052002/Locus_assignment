@@ -1,0 +1,7 @@
+*.json
+myenv
+chat_sessions
+Locus Platform Survey Implementation Guide 1.pdf
+vector_index_backup.pkl
+vector.index
+.env
