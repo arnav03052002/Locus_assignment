@@ -27,14 +27,14 @@ Built with:
 
 ## Folder Structure
 
-.
+
 ├── app.py                      # Streamlit chatbot interface <br>
-├── model.py                    # PDF chunking + FAISS index builder
-├── vector.index                # Precomputed FAISS index
-├── chunks.json                 # Document chunks for retrieval
-├── chat_sessions/              # Saved session transcripts
-├── requirements.txt            # Dependencies
-└── Locus Platform Survey Implementation Guide 1.pdf
+├── model.py                    # PDF chunking + FAISS index builder<br>
+├── vector.index                # Precomputed FAISS index<br>
+├── chunks.json                 # Document chunks for retrieval<br>
+├── chat_sessions/              # Saved session transcripts<br>
+├── requirements.txt            # Dependencies<br>
+└── Locus Platform Survey Implementation Guide 1.pdf<br>
 
 ## How It Works
 
