@@ -28,7 +28,7 @@ Built with:
 ## Folder Structure
 
 .
-├── app.py                      # Streamlit chatbot interface
+├── app.py                      # Streamlit chatbot interface <br>
 ├── model.py                    # PDF chunking + FAISS index builder
 ├── vector.index                # Precomputed FAISS index
 ├── chunks.json                 # Document chunks for retrieval
