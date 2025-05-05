@@ -151,19 +151,37 @@ if query:
             top_chunks = [text for text, _ in sorted(filtered, key=lambda x: x[1])[:15]]
 
             if not top_chunks:
-                st.warning("⚠️ No relevant content found in the document.")
+                st.warning("No relevant content found in the document.")
                 raise ValueError("Insufficient context")
 
             context = "\n\n".join(top_chunks)
 
             #  Friendly, natural assistant prompt
-            prompt = f"""You're a helpful assistant answering questions based on the provided document content.
+            prompt = f"""You are a helpful assistant trained on internal Locus documentation.
 
-You are a helpful assistant answering questions based on the provided document content.
+Your job is to answer user questions based solely on the provided context from the Locus Platform Survey Implementation Guide. Respond in a helpful, clear, and natural tone.
 
-Use the retrieved context below to answer the user's question clearly and naturally. Structure your answer in steps, bullets, or concise paragraphs — whichever suits the question.
+Follow these rules:
+- Only answer based on the provided context. Do NOT hallucinate or assume.
+- If the answer is not found in the context, say: “The document does not provide this information.”
+- If there are multiple questions, answer each one in a separate numbered section.
+- Use bullets, steps, or short paragraphs — whatever best suits the question.
+- Be concise but complete. Avoid overly verbose explanations.
+- If the user’s message is casual (e.g., “thanks”, “okay”), respond briefly in a friendly, human tone.
 
-Do not make up information. Only use what is present in the context. If the answer is partially available, say so and answer as best you can.
+Context: For questions related to these context answer like below question answer
+""
+Once a user completes the survey, the system marks it as 'complete' and prevents others from editing it. Users can also mark a survey as 'incomplete' using workflow steps.
+""
+
+Question:
+1. Can survey responses be edited by others?
+2. How is the survey marked as complete?
+
+Answer:
+1. No, once a user completes the survey, the questions become **readonly** for all other users. Others cannot edit the responses.
+2. A script like `rec.completeSurvey(true)` is used in workflows to mark a survey as complete, locking further changes.
+
 
 If the user's message is emotional or expressive (e.g., "thanks", "ok", "got it", "cool", "sorry"), reply briefly — just like a normal human would. Be casual, friendly, and don't over-explain.
 
